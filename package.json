@@ -1,7 +1,6 @@
 {
   "name": "skeleton",
   "version": "0.0.1",
-  "license": "WTFPL",
   "devDependencies": {
     "autoprefixer": "^6.5.1",
     "babel-cli": "^6.16.0",
@@ -13,6 +12,7 @@
     "babel-preset-es2016": "^6.16.0",
     "babel-preset-es2017": "^6.16.0",
     "babel-register": "^6.16.3",
+    "css-loader": "^0.25.0",
     "eslint": "^3.8.1",
     "eslint-config-airbnb-base": "^9.0.0",
     "eslint-plugin-import": "^2.0.1",
@@ -24,15 +24,17 @@
     "precss": "^1.4.0",
     "rimraf": "^2.5.4",
     "sass-lint": "^1.9.1",
+    "sass-loader": "^4.0.2",
     "strip-loader": "^0.1.2",
     "sugarss": "^0.2.0",
     "webpack": "^1.13.2",
     "webpack-dev-server": "^1.16.2",
     "webpack-hot-middleware": "^2.13.0"
   },
+  "license": "WTFPL",
   "scripts": {
-    "test": "npm-run-all ",
+    "fixpack": "fixpack",
     "start": "",
-    "fixpack": "fixpack"
+    "test": "npm-run-all "
   }
 }
