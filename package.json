@@ -3,8 +3,9 @@
   "version": "0.0.1",
   "license": "WTFPL",
   "scripts": {
+    "build": "./node_modules/.bin/webpack",
     "fixpack": "fixpack",
-    "start": "",
+    "start": "./node_modules/.bin/webpack-dev-server",
     "test": "npm-run-all "
   },
   "devDependencies": {
@@ -23,7 +24,9 @@
     "eslint-config-airbnb-base": "^9.0.0",
     "eslint-plugin-import": "^2.0.1",
     "fixpack": "^2.3.1",
+    "html-webpack-plugin": "^2.24.1",
     "jscs": "^3.0.7",
+    "node-sass": "^3.10.1",
     "path": "^0.12.7",
     "postcss": "^5.2.4",
     "postcss-loader": "^1.0.0",
