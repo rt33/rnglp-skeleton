@@ -1,0 +1,6 @@
+{
+  "esprima": "./node_modules/babel-jscs",
+  "preset": "airbnb",
+  "requireTrailingComma": false,
+  "safeContextKeyword": ["that"]
+}
