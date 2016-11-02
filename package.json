@@ -1,6 +1,12 @@
 {
   "name": "skeleton",
   "version": "0.0.1",
+  "license": "WTFPL",
+  "scripts": {
+    "fixpack": "fixpack",
+    "start": "",
+    "test": "npm-run-all "
+  },
   "devDependencies": {
     "autoprefixer": "^6.5.1",
     "babel-cli": "^6.16.0",
@@ -30,11 +36,5 @@
     "webpack": "^1.13.2",
     "webpack-dev-server": "^1.16.2",
     "webpack-hot-middleware": "^2.13.0"
-  },
-  "license": "WTFPL",
-  "scripts": {
-    "fixpack": "fixpack",
-    "start": "",
-    "test": "npm-run-all "
   }
 }
