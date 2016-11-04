@@ -2,11 +2,11 @@
   "name": "skeleton",
   "version": "0.0.1",
   "license": "WTFPL",
+  "main": "src/js/main.js",
   "scripts": {
-    "build": "./node_modules/.bin/webpack",
+    "build": "webpack --progress --colors",
     "fixpack": "fixpack",
-    "start": "./node_modules/.bin/webpack-dev-server",
-    "test": "npm-run-all "
+    "start": "webpack-dev-server --progress --colors --inline --hot"
   },
   "devDependencies": {
     "autoprefixer": "^6.5.1",

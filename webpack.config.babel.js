@@ -1,19 +1,41 @@
 import path from 'path';
 import autoprefixer from 'autoprefixer';
 import precss from 'precss';
-import HtmlWebpackPlugin from 'html-webpack-plugin';
 
 export default {
+  context: __dirname + "/src",
   entry: {
-    bundle: './src/js/main.js',
-    style: './src/js/style.js'
+    bundle: __dirname + '/src/js/main.js',
+    style: __dirname + '/src/js/style.js'
   },
   output: {
     path: path.join(__dirname, 'dist'),
     filename: '[name].js',
     publicPath: '/'
   },
+  progress: true,
+  resolve: {
+    modulesDirectories: [
+      'src',
+      'node_modules'
+    ],
+    extenstions: ['', '.js', '.json', '.html']
+  },
+  eslint: {
+    configFile: '.eslintrc'
+  },
+  devServer: {
+    contentBase: 'dist',
+    port: 3000
+  },
   module: {
+    preLoaders: [
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        loader: "eslint"
+      }
+    ],
     loaders: [
       {
         test: /\.js$/,
@@ -30,16 +52,13 @@ export default {
           'css',
           'postcss?parser=sugarss'
         ]
+      },
+      {
+        test: /\.html$/,
+        loader: 'html?name=[path][name].[ext]'
       }
     ]
   },
-  plugins: [
-    new HtmlWebpackPlugin({
-      template: './src/index.html',
-      filename: 'index.html',
-      hash: true
-    })
-  ],
   postcss: [
     autoprefixer({
       browsers: [
