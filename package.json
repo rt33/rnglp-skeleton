@@ -2,11 +2,10 @@
   "name": "skeleton",
   "version": "0.0.1",
   "license": "WTFPL",
-  "main": "src/js/main.js",
   "scripts": {
     "build": "webpack --progress --colors",
     "fixpack": "fixpack",
-    "start": "webpack-dev-server --progress --colors --inline --hot"
+    "start": "webpack-dev-server"
   },
   "devDependencies": {
     "autoprefixer": "^6.5.1",
@@ -36,6 +35,7 @@
     "sass-lint": "^1.9.1",
     "sass-loader": "^4.0.2",
     "strip-loader": "^0.1.2",
+    "style-loader": "^0.13.1",
     "sugarss": "^0.2.0",
     "webpack": "^1.13.2",
     "webpack-dev-server": "^1.16.2",

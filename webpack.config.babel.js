@@ -1,17 +1,15 @@
 import autoprefixer from 'autoprefixer';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
-import path from 'path';
 import precss from 'precss';
 import webpack from 'webpack';
 
 export default {
   context: `${__dirname}/src`,
   entry: {
-    bundle: [`${__dirname}/src/js/main.js`],
-    html: [`${__dirname}/src/html/index.html`]
+    bundle: `${__dirname}/src/js/main.js`
   },
   output: {
-    path: `${__dirname}dist`,
+    path: `${__dirname}/dist`,
     filename: '[name].js',
     publicPath: '/'
   },
@@ -30,13 +28,17 @@ export default {
     hot: true,
     inline: true,
     progress: true,
+    colors: true,
     contentBase: 'dist',
     port: 3000
   },
   devtool: 'source-map',
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
-    new HtmlWebpackPlugin()
+    new HtmlWebpackPlugin({
+      template: `${__dirname}/src/html/index.html`,
+      filename: `${__dirname}/dist/index.html`
+    })
   ],
   module: {
     preLoaders: [
@@ -51,25 +53,18 @@ export default {
         test: /\.js$/,
         exclude: /node_modules/,
         include: [
-          `${__dirname}/src/js`
+          `${__dirname}/src`
         ],
         loader: 'babel'
-      },
-      {
-        test: /\.css$/,
-        loader: 'style-loader!css-loader',
       },
       {
         test: /\.scss$/,
         loaders: [
           'style',
           'css',
-          'postcss?parser=sugarss'
+          'postcss',
+          'sass'
         ]
-      },
-      {
-        test: /\.html$/,
-        loader: 'html?name=[path][name].[ext]'
       }
     ]
   },
