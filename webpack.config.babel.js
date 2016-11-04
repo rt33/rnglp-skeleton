@@ -1,15 +1,16 @@
-import path from 'path';
 import autoprefixer from 'autoprefixer';
+import HtmlWebpackPlugin from 'html-webpack-plugin';
+import path from 'path';
 import precss from 'precss';
+import webpack from 'webpack';
 
 export default {
-  context: __dirname + "/src",
+  context: `${__dirname}/src`,
   entry: {
-    bundle: __dirname + '/src/js/main.js',
-    style: __dirname + '/src/js/style.js'
+    bundle: `${__dirname}/src/js/main.js`
   },
   output: {
-    path: path.join(__dirname, 'dist'),
+    path: `${__dirname}dist`,
     filename: '[name].js',
     publicPath: '/'
   },
@@ -19,21 +20,32 @@ export default {
       'src',
       'node_modules'
     ],
-    extenstions: ['', '.js', '.json', '.html']
+    extensions: ['', '.js', '.json', '.html']
   },
   eslint: {
     configFile: '.eslintrc'
   },
   devServer: {
+    hot: true,
+    inline: true,
+    progress: true,
     contentBase: 'dist',
     port: 3000
   },
+  devtool: 'source-map',
+  plugins: [
+    new webpack.HotModuleReplacementPlugin(),
+    new HtmlWebpackPlugin({
+      filename: 'index.html',
+      template: `${__dirname}/src/html/index.html`
+    })
+  ],
   module: {
     preLoaders: [
       {
         test: /\.js$/,
         exclude: /node_modules/,
-        loader: "eslint"
+        loader: 'eslint'
       }
     ],
     loaders: [
@@ -41,9 +53,13 @@ export default {
         test: /\.js$/,
         exclude: /node_modules/,
         include: [
-          `${__dirname}/src`
+          `${__dirname}/src/js`
         ],
         loader: 'babel'
+      },
+      {
+        test: /\.css$/,
+        loader: 'style-loader!css-loader',
       },
       {
         test: /\.scss$/,
