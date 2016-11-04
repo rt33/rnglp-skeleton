@@ -7,7 +7,8 @@ import webpack from 'webpack';
 export default {
   context: `${__dirname}/src`,
   entry: {
-    bundle: `${__dirname}/src/js/main.js`
+    bundle: [`${__dirname}/src/js/main.js`],
+    html: [`${__dirname}/src/html/index.html`]
   },
   output: {
     path: `${__dirname}dist`,
@@ -35,10 +36,7 @@ export default {
   devtool: 'source-map',
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
-    new HtmlWebpackPlugin({
-      filename: 'index.html',
-      template: `${__dirname}/src/html/index.html`
-    })
+    new HtmlWebpackPlugin()
   ],
   module: {
     preLoaders: [
