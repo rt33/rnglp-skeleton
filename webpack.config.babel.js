@@ -24,6 +24,9 @@ export default {
   eslint: {
     configFile: '.eslintrc'
   },
+  jscs: {
+    configFile: '.jscsrc'
+  },
   devServer: {
     hot: true,
     inline: true,
@@ -45,7 +48,10 @@ export default {
       {
         test: /\.js$/,
         exclude: /node_modules/,
-        loader: 'eslint'
+        loaders: [
+          'eslint',
+          'jscs'
+          ]
       }
     ],
     loaders: [
